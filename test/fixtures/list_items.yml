@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: MyString
+  owner_id: MyString
+  rating: 1
+  notes: MyString
+  start_date: 2022-08-22
+  finish_date: 2022-08-22
+
+two:
+  book_id: MyString
+  owner_id: MyString
+  rating: 1
+  notes: MyString
+  start_date: 2022-08-22
+  finish_date: 2022-08-22

@@ -1,0 +1,16 @@
+Rails.application.routes.draw do
+  devise_for :users
+  namespace 'api' do
+    resources :books
+    resources :list_items
+    resources :users
+
+    get 'reading_list' => 'list_items#reading_list'
+    get 'finished' => 'list_items#finished'
+    
+  end
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+end
