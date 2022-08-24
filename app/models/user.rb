@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+
   has_many :list_items
   has_many :books, through: :list_items, foreign_key: "owner_id"
 end
