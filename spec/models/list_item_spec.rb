@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ListItem, type: :model do
   before(:all) do
-    @list_item1 = create(:list_item)
+    let(:list_item1) { create(:list_item) }
   end
   
   it "is valid with valid attributes" do
-    expect(@list_item1).to be_valid
+    expect(list_item1).to be_valid
   end
   
   it "is not valid without a book_id" do 

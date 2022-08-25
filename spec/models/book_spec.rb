@@ -1,20 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
-
-
-require 'rails_helper'
-
-RSpec.describe Book, type: :model do
 
   before(:all) do
-    @book1 = create(:book)
+    let(:book1) { create(:book) }
   end
   
   it "is valid with valid attributes" do
-    expect(@book1).to be_valid
+    expect(book1).to be_valid
   end
   
   it "is not valid without a title" do 
@@ -32,8 +25,8 @@ RSpec.describe Book, type: :model do
     expect(book2).to_not be_valid
   end
 
-  it "is not valid without an pageCount" do
-    book2 = build(:book, pageCount: nil)
+  it "is not valid without an page_count" do
+    book2 = build(:book, page_count: nil)
     expect(book2).to_not be_valid
   end
 

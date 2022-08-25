@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :author
       t.string :cover_image_url
-      t.integer :pageCount
+      t.integer :page_count
       t.string :publisher
       t.text :synopsis
 
