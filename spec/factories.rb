@@ -1,5 +1,5 @@
 FactoryBot.define do
-  
+
   factory :user do
     username { Faker::Internet.username }
     email { Faker::Internet.email }
@@ -23,5 +23,4 @@ FactoryBot.define do
     start_date { Date.current }
     finish_date { Date.current + 1.day }
   end
-
 end

@@ -1,18 +1,17 @@
 module Api
   class BooksController < ApplicationController
-    before_action :set_book, only: %i[ show update destroy ]
-    before_action :authenticate_user!
+    before_action :set_book, only: %i[show update destroy]
 
     # GET /books
     def index
       @books = Book.new_books
 
-      render json: @books
+      render json: BookSerializer.new(@books).serialized_json, status: :ok
     end
 
     # GET /books/1
     def show
-      render json: @book
+      render json: BookSerializer.new(@book).serialized_json, status: :ok
     end
 
     # POST /books
@@ -20,18 +19,18 @@ module Api
       @book = Book.new(book_params)
 
       if @book.save
-        render json: @book, status: :created, location: @book
+        render json: BookSerializer.new(@book).serialized_json, status: :created, location: @book
       else
-        render json: @book.errors, status: :unprocessable_entity
+        render json: { errors: @book.errors }, status: :unprocessable_entity
       end
     end
 
     # PATCH/PUT /books/1
     def update
       if @book.update(book_params)
-        render json: @book
+        render json: BookSerializer.new(@book).serialized_json, status: :ok
       else
-        render json: @book.errors, status: :unprocessable_entity
+        render json: { errors: @book.errors }, status: :unprocessable_entity
       end
     end
 
@@ -41,7 +40,8 @@ module Api
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
+    
+    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end

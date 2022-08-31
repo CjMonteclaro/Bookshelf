@@ -47,9 +47,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'rspec-rails'
+  gem 'annotate'
 end
 
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'active_model_serializers'
+gem 'rubocop', '~> 1.35', require: false
