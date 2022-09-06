@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_api_user!
 
   respond_to :json
 
@@ -15,8 +15,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }
     else
       render json: {
-        status: { message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence }" }
+        message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence }"
       }, status: :unprocessable_entity
     end
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:username, :email, :password)
   end
 end

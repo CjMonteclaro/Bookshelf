@@ -55,3 +55,4 @@ gem 'devise-jwt'
 gem 'fast_jsonapi'
 gem 'active_model_serializers'
 gem 'rubocop', '~> 1.35', require: false
+gem 'pry', '~> 0.13.1'

@@ -1,7 +1,7 @@
 module Api
   class UsersController < ApplicationController
     before_action :set_user, only: %i[show update destroy]
-    before_action :authenticate_user!, except: %i[create]
+    before_action :authenticate_api_user!, except: %i[create]
 
     # GET /users
     def index
@@ -20,7 +20,7 @@ module Api
       @user = User.new(user_params)
 
       if @user.save
-        render json: UserSerializer.new(@user).serialized_json, status: :created, location: @user
+        render json: UserSerializer.new(@user).serialized_json, status: :created
       else
         render json: { errors: @user.errors }, status: :unprocessable_entity
       end

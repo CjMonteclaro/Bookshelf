@@ -20,8 +20,8 @@ class Book < ApplicationRecord
   validates :author, presence: true
   validates :publisher, presence: true
 
-  def self.new_books
-    currently_listed = ListItem.where(owner_id: current_user.id).collect(&:book_id)
+  def self.new_books(current_api_user)
+    currently_listed = ListItem.where(owner_id: current_api_user.id).collect(&:book_id)
 
     self.where.not(id: currently_listed)
   end

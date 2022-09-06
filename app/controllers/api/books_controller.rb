@@ -4,7 +4,7 @@ module Api
 
     # GET /books
     def index
-      @books = Book.new_books
+      @books = Book.new_books(current_api_user)
 
       render json: BookSerializer.new(@books).serialized_json, status: :ok
     end

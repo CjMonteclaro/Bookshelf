@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_api_user!
   
   respond_to :json
 
@@ -15,16 +15,18 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    if current_user
+    if current_api_user
       render json: {
-        status: 200,
         message: "Logged out successfully"
       }, status: :ok
     else
       render json: {
-        status: 401,
         message: "Couldn't find an active session."
       }, status: :unauthorized
     end
+  end
+
+  def sign_in_params
+    params.require(:user).permit(:username, :email, :password)
   end
 end

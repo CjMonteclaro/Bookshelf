@@ -9,12 +9,12 @@ module Api
     end
 
     def reading_list
-      @list_items = ListItem.where(owner_id: current_user.id).reading_list
+      @list_items = ListItem.where(owner_id: current_api_user.id).reading_list
       render json: ListItemSerializer.new(@list_items).serialized_json, status: :ok
     end
 
     def finished
-      @list_items = ListItem.where(owner_id: current_user.id).finished
+      @list_items = ListItem.where(owner_id: current_api_user.id).finished
       render json: ListItemSerializer.new(@list_items).serialized_json, status: :ok
     end
 
