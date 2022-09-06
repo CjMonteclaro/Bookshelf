@@ -20,10 +20,7 @@
 #  index_users_on_jti                   (jti) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-one:
-  username: MyString
-  password: MyString
-
-two:
-  username: MyString
-  password: MyString
+class UserSerializer
+  include FastJsonapi::ObjectSerializer
+  attributes :id, :username, :email, :created_at
+end

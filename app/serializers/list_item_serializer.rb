@@ -12,10 +12,9 @@
 #  book_id     :string
 #  owner_id    :string
 #
-require "test_helper"
-
-class ListItemTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class ListItemSerializer < ActiveModel::Serializer
+  include FastJsonapi::ObjectSerializer
+  belongs_to :book
+  belongs_to :user
+  attributes :rating, :notes, :start_date, :finish_date
 end

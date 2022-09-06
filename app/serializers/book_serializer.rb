@@ -12,18 +12,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-one:
-  title: MyString
-  author: MyString
-  cover_image_url: MyString
-  pageCount: 1
-  publisher: MyString
-  synopsis: MyText
-
-two:
-  title: MyString
-  author: MyString
-  cover_image_url: MyString
-  pageCount: 1
-  publisher: MyString
-  synopsis: MyText
+class BookSerializer < ActiveModel::Serializer
+  include FastJsonapi::ObjectSerializer
+  attributes :title, :author, :publisher, :synopsis, :cover_image_url, :page_count
+end

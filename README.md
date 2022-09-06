@@ -1,24 +1,34 @@
-# README
+# Bookshelf API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails API for the bookshelf app.
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Pre-requisites
 
-* System dependencies
+Ruby 3.0.4
+Rails 7.0.3
 
-* Configuration
+### Clone the repository.
 
-* Database creation
+```
+git clone git@github.com:CjMonteclaro/Bookshelf.git
+```
 
-* Database initialization
+### Run the bundler to install the gems
+```
+bundle install
+```
 
-* How to run the test suite
+### Setup the database
+```
+rails db:create
+rails db:setup
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Start Rails Server
+```
+rails server
+```
 
-* Deployment instructions
-
-* ...
+Now you can visit the site with the URL http://localhost:3000
