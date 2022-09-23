@@ -9,12 +9,12 @@ module Api
     end
 
     def reading_list
-      @list_items = ListItem.where(owner_id: current_api_user.id).reading_list
+      @list_items = ListItem.where(user_id: @current_user.id).reading_list
       render json: ListItemSerializer.new(@list_items).serialized_json, status: :ok
     end
 
     def finished
-      @list_items = ListItem.where(owner_id: current_api_user.id).finished
+      @list_items = ListItem.where(user_id: @current_user.id).finished
       render json: ListItemSerializer.new(@list_items).serialized_json, status: :ok
     end
 
@@ -28,7 +28,7 @@ module Api
       @list_item = ListItem.new(list_item_params)
 
       if @list_item.save
-        render json: ListItemSerializer.new(@list_item).serialized_json, status: :created, location: @list_item
+        render json: ListItemSerializer.new(@list_item).serialized_json, status: :created
       else
         render json: { errors: @list_item.errors }, status: :unprocessable_entity
       end
@@ -57,7 +57,7 @@ module Api
 
     # Only allow a list of trusted parameters through.
     def list_item_params
-      params.require(:list_item).permit(:book_id, :owner_id, :rating, :notes, :start_date, :finish_date)
+      params.require(:list_item).permit(:book_id, :user_id, :rating, :notes, :start_date, :finish_date)
     end
   end
 end

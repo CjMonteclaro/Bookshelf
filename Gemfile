@@ -8,6 +8,7 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+gem 'pg_search'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -50,8 +51,9 @@ group :development do
   gem 'annotate'
 end
 
-gem 'devise'
-gem 'devise-jwt'
+gem 'jwt'
+gem 'bcrypt', '~> 3.1.7'
+
 gem 'fast_jsonapi'
 gem 'active_model_serializers'
 gem 'rubocop', '~> 1.35', require: false

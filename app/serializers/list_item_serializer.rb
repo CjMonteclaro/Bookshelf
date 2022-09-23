@@ -10,11 +10,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  book_id     :string
-#  owner_id    :string
+#  user_id    :string
 #
 class ListItemSerializer < ActiveModel::Serializer
   include FastJsonapi::ObjectSerializer
-  belongs_to :book
-  belongs_to :user
-  attributes :rating, :notes, :start_date, :finish_date
+  attributes :rating, :notes, :start_date, :finish_date, :book, :user
 end
