@@ -4,7 +4,13 @@ module Api
 
     # GET /books
     def index
-      @books = Book.new_books(current_api_user)
+      @books = Book.new_books(@current_user)
+
+      render json: BookSerializer.new(@books).serialized_json, status: :ok
+    end
+
+    def search_title
+      @books = Book.search_by_title(params[:query])
 
       render json: BookSerializer.new(@books).serialized_json, status: :ok
     end
